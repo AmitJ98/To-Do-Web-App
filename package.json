@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AmitJ98/To-Do-Web-App/issues"
   },
-  "homepage": "https://github.com/AmitJ98/To-Do-Web-App#readme"
+  "homepage": "https://github.com/AmitJ98/To-Do-Web-App#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
