@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html> 
+    <%- include("./partials/head.ejs")  %>
+    <link rel="stylesheet" href="/public/NewTaskForm.css">
+    <link rel="stylesheet" href="/public/display_tasks.css">
+
+
+
+    <body>
+        <%- include("./partials/nav.ejs")  %>
+
+        <% if (tasks.length > 0) { %>
+            <div id="task-container">
+                <% for (let i = 0; i < tasks.length; i++) { %>
+                    <div class="task-item" id="task<%= i %>">
+                        <h2 id="display-task"><%= tasks[i].task %></h2>
+                        <p class="description"><%= tasks[i].description %></p> 
+                    </div>
+                <% } %>
+            </div>
+        <% } else { %>
+            <p>There are no tasks to display</p>
+        <% } %>
+
+
+        <form id="New-Task-Form" action="/lists" , method="post">
+
+            <label for="Task">Enter New Task: </label>
+            <input type="text" id="Task" name="Task" required>
+            <br><br>
+            <textarea id="Task-Description" name="Task-Description" placeholder="Enter Task Description"></textarea>
+            <input type="submit" value="Add Task">
+        </form>
+
+
+
+
+
+
+
+    </body>
+
+
+</html>

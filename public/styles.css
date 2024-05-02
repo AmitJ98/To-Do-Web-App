@@ -1,16 +1,100 @@
-h1 {
-    text-decoration: underline;
-    font-family: Arial;
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style header */
+header {
+    background-color: #f2f2f2;
+    padding: 20px 0;
     text-align: center;
 }
 
-
-h2 {
-    color: orange;
-    font-size: 25px;
+#headline {
+    font-size: 30px;
+    color: #333;
 }
 
-ul {
-
-    border: 4px dashed crimson;
+/* Style navigation */
+nav {
+    background-color: #333;
 }
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul li a:hover {
+    background-color: pink;
+}
+
+/* Style hero section */
+
+
+.home-page-headline h2 {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+}
+
+/* Style task form */
+.task-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.task-form form {
+    display: inline-block;
+}
+
+.task-form label {
+    margin-right: 10px;
+}
+
+.task-form input[type="text"] {
+    padding: 5px;
+    width: 200px;
+}
+
+.task-form button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style task list */
+.task-list {
+    margin-top: 20px;
+}
+
+.task-list h2 {
+    text-align: center;
+}
+
+.task-list ul {
+    list-style-type: none;
+}
+
+.task-list ul li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+
+

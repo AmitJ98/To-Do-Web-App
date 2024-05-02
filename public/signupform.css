@@ -1,0 +1,61 @@
+
+/* Apply general styles to the form */
+#signupForm {
+    width: 300px;
+    margin: 0 auto;
+}
+
+/* Style labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style inputs */
+input[type="email"],
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Style radio buttons and labels */
+input[type="radio"] {
+    margin-right: 5px;
+}
+input[type="radio"] + label {
+    margin-right: 15px;
+}
+
+/* Style submit button */
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Style select dropdown */
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+    #signupForm {
+        width: 100%;
+    }
+}

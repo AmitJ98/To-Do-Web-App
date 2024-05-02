@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>To Do Web App</title>
-    </head>
+    
+    <%- include("./partials/head.ejs")  %>
+    <link rel="stylesheet" href="/public/signupform.css">
 
     <body>
-        <h1>Sign Up Page</h1>
-        <div>
-            <a href="/"><h3> link to Home Page </h3> </a>
-        </div>
+        <%- include("./partials/nav.ejs")  %>
+
+        <br><br><br>
+
 
         <div>
-            <form>
+            <form id="signupForm" action="/SignUp" method="POST">
                 <label for="email">Enter email adress:</label>
                 <input type="email" id="email" name="email" placeholder="Email Adress" required>
 
@@ -48,19 +48,14 @@
                     <option value="United Kindom"> UK </option>
                 </select>
 
-                <br><br><br>
+                <br>
 
                 <input type="submit" value="SignUp">
 
-
             </form>
 
-
-
         </div>
-
-
+        
     </body>
-
 
 </html>
