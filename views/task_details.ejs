@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="/public/task_details.css">
+    <%- include("./partials/head.ejs")  %>
+    
+    <body>
+        <%- include("./partials/nav.ejs")  %>
+
+        <div class="container">
+            <h1>Edit Task</h1>
+            <form action="/lists/<%= task._id %>" method="POST">
+                <div class="form-group">
+                    <label for="task">Task:</label>
+                    <input type="text" id="task" name="task" value="<%= task.task %>">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description"><%= task.description %></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Priority:</label>
+                    <input type="number" id="priority" name="priority" value="<%= task.priority %>">
+                </div>
+                <button type="submit">Update Task</button>
+            </form>
+            
+        </div>
+    </body>
+
+</html>

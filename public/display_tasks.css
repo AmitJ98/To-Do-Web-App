@@ -50,3 +50,8 @@
 .task-item:hover .description {
     display: block; /* Show description on hover */
 }
+
+
+.task_details {
+    text-decoration-line: none;
+}
