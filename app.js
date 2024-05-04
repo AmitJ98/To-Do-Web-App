@@ -16,9 +16,6 @@ connectToDb((err) => {
 })
 
 
-// app.listen(3000)
-
-
 app.set('view engine', 'ejs')
 
 
@@ -73,8 +70,8 @@ app.get('/lists/:id' ,(requset,response) => {
     if (ObjectId.isValid(id)){
         database.collection('tasks')
         .findOne({_id: new ObjectId(id)})
-        .then(doc => {
-            response.status(200).render('task_details', {task:doc})
+        .then(result_task => {
+            response.status(200).render('task_details', {task:result_task})
         })
         .catch((err) => {
             response.status(500).json({error: 'error'}); 
@@ -119,9 +116,9 @@ app.delete('/lists/:id' ,(requset,response) => {
 });
 
 
-app.post('/lists/:id/update' ,(requset,response) => {
+app.post('/lists/:id' ,(requset,response) => {
     const id = requset.params.id;
-    const updatedTask = requset.body; // Assuming the request body contains the updated task details
+    const updatedTask = requset.body; 
 
     if (ObjectId.isValid(id)) {
         database.collection('tasks')
