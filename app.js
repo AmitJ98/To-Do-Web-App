@@ -15,7 +15,6 @@ connectToDb((err) => {
     }
 })
 
-// export default database;
 
 app.set('view engine', 'ejs')
 
@@ -37,6 +36,9 @@ app.get('/about' ,(requset,response) => {
     response.render('about');
 });
 
+
+
+//sign up routes 
 app.get('/SignUp' ,(requset,response) => {
     response.render('SignUp')
 });
@@ -47,8 +49,13 @@ app.post('/SignUp' ,(requset,response) => {
 } );
 
 
+//user/profile routes
 
 
+
+
+
+//task list routes
 app.get('/lists', (request, response) => lists_controllers.show_list(database, request, response));
 
 

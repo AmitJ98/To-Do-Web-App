@@ -3,9 +3,7 @@
     <%- include("./partials/head.ejs")  %>
     <link rel="stylesheet" href="/public/NewTaskForm.css">
     <link rel="stylesheet" href="/public/display_tasks.css">
-
-
-
+    <script src="../scripts/new_task_validation.js"></script>
     <body>
         <%- include("./partials/nav.ejs")  %>
 
@@ -15,7 +13,9 @@
                     <div class="task-item" id="task<%= i %>">
                         <a class="task_details" href="/lists/<%= tasks[i]._id %>">
                             <h2 id="display-task"><%= tasks[i].task %></h2>
-                            <p class="description"><%= tasks[i].description %></p>
+                            <% if (tasks[i].description) { %>
+                                <p class="description"><%= tasks[i].description %></p>
+                            <% } %>
                         </a>
                     </div>
                 <% } %>
@@ -25,16 +25,16 @@
         <% } %>
 
 
-        <form id="New-Task-Form" action="/lists" , method="post">
-            <label for="Task">Enter New Task: </label>
-            <input type="text" id="Task" name="task" required>
+        <form id="New-Task-Form" action="/lists" , method="post" onsubmit="return validate_new_task_form()">
+            <label for="task">Enter New Task: </label>
+            <input type="text" id="task" name="task" required>
             <br><br>
 
             <textarea id="description" name="description" placeholder="Enter Task Description"></textarea>
             <br><br>
 
             <label for="priority">Priority: </label>
-            <input type = "number" id="priority" name="priority" placeholder="3" >
+            <input type = "number" id="priority" name="priority" value="3" min="1" max="5" >
             <br><br>
 
             <input type="submit" value="Add Task">

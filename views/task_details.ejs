@@ -11,7 +11,7 @@
             <form action="/lists/<%= task._id %>" method="POST">
                 <div class="form-group">
                     <label for="task">Task:</label>
-                    <input type="text" id="task" name="task" value="<%= task.task %>">
+                    <input type="text" id="task" name="task" value="<%= task.task %>" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="priority">Priority:</label>
-                    <input type="number" id="priority" name="priority" value="<%= task.priority %>">
+                    <input type="number" id="priority" name="priority" value="<%= task.priority %>" min="1" max="5">
                 </div>
                 <button type="submit">Update Task</button>
             </form>

@@ -1,10 +1,8 @@
 import { Db, ObjectId, Timestamp } from 'mongodb';
 
 
-
 const show_list = (database,request,response) => {
     let tasks = [];
-    console.log(database)
     database.collection('tasks').find()
         .sort({priority:-1})
         .toArray() // Convert the cursor to an array
@@ -20,7 +18,9 @@ const show_list = (database,request,response) => {
 
 const post_task = (database,request,response) =>    {
     const task = request.body;
+    task.priority = parseInt(task.priority);
     task.createdAt = new Date()
+
     database.collection('tasks')
              .insertOne(task )
              .then(result => {
@@ -52,6 +52,7 @@ const post_task = (database,request,response) =>    {
 const update_task = (database,request,response) =>{
     const id = request.params.id;
     const updatedTask = request.body; 
+    updatedTask.priority = parseInt(updatedTask.priority)
 
     if (ObjectId.isValid(id)) {
         database.collection('tasks')
