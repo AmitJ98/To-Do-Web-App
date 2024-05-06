@@ -1,7 +1,7 @@
 import express from 'express';
 import { render } from 'ejs';
 import { connectToDb, getDb } from './db.js';
-import { Db, ObjectId, Timestamp } from 'mongodb';
+import lists_controllers from './controllers/lists_controllers.js';
 
 
 const app = express()
@@ -15,6 +15,7 @@ connectToDb((err) => {
     }
 })
 
+// export default database;
 
 app.set('view engine', 'ejs')
 
@@ -48,89 +49,17 @@ app.post('/SignUp' ,(requset,response) => {
 
 
 
-app.get('/lists' ,(requset,response) => {
-    let tasks = [];
-    database.collection('tasks').find()
-        .sort({priority:-1})
-        .toArray() // Convert the cursor to an array
-        .then((taskArray) => {
-            tasks = taskArray; // Assign the array of tasks
-            response.render('Lists',{tasks: tasks});
-         })
-        .catch((err) => {
-            response.status(500).json({error: 'error'}); // Handle the error
-        });
-
-});
+app.get('/lists', (request, response) => lists_controllers.show_list(database, request, response));
 
 
-
-app.get('/lists/:id' ,(requset,response) => {
-    const id = requset.params.id;
-    if (ObjectId.isValid(id)){
-        database.collection('tasks')
-        .findOne({_id: new ObjectId(id)})
-        .then(result_task => {
-            response.status(200).render('task_details', {task:result_task})
-        })
-        .catch((err) => {
-            response.status(500).json({error: 'error'}); 
-        });
-    }
-    else {
-        response.status(500).json({error: 'NOT A VALID ID'})
-    }
-});
+app.get('/lists/:id' ,(requset,response) => lists_controllers.task_details(database,requset,response)); 
 
 
-app.post('/lists' ,(requset,response) => {
-   const task = requset.body;
-   task.createdAt = new Date()
-   database.collection('tasks')
-            .insertOne(task )
-            .then(result => {
-                response.status(201).redirect('/lists')
-            })
-            .catch(err => {
-                response.status(500).json({error:'coult not create a new task'});
-            })
-});
+app.post('/lists', (request, response) => lists_controllers.post_task(database, request, response));
 
 
-app.delete('/lists/:id' ,(requset,response) => {
-    const id = requset.params.id;
-    if (ObjectId.isValid(id)){
-        database.collection('tasks')
-        .deleteOne({_id: new ObjectId(id)})
-        .then(result => {
-            response.status(200).redirect('/lists')
-        })
-        .catch((err) => {
-            response.status(500).json({error: 'could not delete the task'}); 
-        });
-    }
-    else {
-        response.status(500).json({error: 'NOT A VALID ID'})
-    }
-    
-});
+//need to be delete
+app.post('/lists/:id/delete', (request, response) => lists_controllers.delete_task(database,request,response));
 
 
-app.post('/lists/:id' ,(requset,response) => {
-    const id = requset.params.id;
-    const updatedTask = requset.body; 
-
-    if (ObjectId.isValid(id)) {
-        database.collection('tasks')
-            .updateOne({ _id: new ObjectId(id) }, { $set: updatedTask })
-            .then(result => {
-                response.status(200).redirect('/lists')
-            })
-            .catch(err => {
-                console.error('Error updating task:', err);
-                response.status(500).json({ error: 'Failed to update task' });
-            });
-    } else {
-        response.status(400).json({ error: 'Invalid task ID' });
-    }
- });
+app.post('/lists/:id' ,(requset,response) => lists_controllers.update_task(database,requset,response));

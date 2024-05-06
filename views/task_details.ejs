@@ -23,6 +23,11 @@
                 </div>
                 <button type="submit">Update Task</button>
             </form>
+
+            <form id="deleteForm" action="/lists/<%= task._id %>/delete" method='post'>
+                <input type="hidden" name="_method" value="DELETE"> <!-- This line is added to mimic the DELETE method -->
+                <button id="deleteButton" type="submit">Delete Task</button>
+            </form>
             
         </div>
     </body>
