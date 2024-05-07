@@ -2,6 +2,7 @@ import express from 'express';
 import { render } from 'ejs';
 import { connectToDb, getDb } from './db.js';
 import lists_controllers from './controllers/lists_controllers.js';
+import Auth_controllers from './controllers/Auth_controllers.js'
 
 
 const app = express()
@@ -20,6 +21,7 @@ app.set('view engine', 'ejs')
 
 
 app.use('/public', express.static('public')); 
+app.use('/scripts', express.static('scripts')); 
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -39,14 +41,10 @@ app.get('/about' ,(requset,response) => {
 
 
 //sign up routes 
-app.get('/SignUp' ,(requset,response) => {
-    response.render('SignUp')
-});
+app.get('/signUp', Auth_controllers.sign_up_get);
 
-app.post('/SignUp' ,(requset,response) => {
-    console.log(requset.body);
-    response.redirect("/home");
-} );
+
+app.post('/signUp' ,(request, response) => Auth_controllers.create_new_acount(database,request,response));
 
 
 //user/profile routes
@@ -57,6 +55,7 @@ app.post('/SignUp' ,(requset,response) => {
 
 //task list routes
 app.get('/lists', (request, response) => lists_controllers.show_list(database, request, response));
+
 
 
 app.get('/lists/:id' ,(requset,response) => lists_controllers.task_details(database,requset,response)); 

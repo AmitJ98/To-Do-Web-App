@@ -1,50 +1,48 @@
-/* styles.css */
-
-/* Apply general styles to the form */
-form {
-    width: 60%;
-    margin: 0 auto;
-}
-
-/* Style labels */
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-/* Style inputs */
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+#New-Task-Form {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#New-Task-Form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#New-Task-Form input[type="text"],
+#New-Task-Form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
-/* Style submit button */
-input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    border: none;
+#New-Task-Form textarea {
+    height: 100px;
+}
+
+#New-Task-Form input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#New-Task-Form input[type="submit"] {
     background-color: #007bff;
     color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
+#New-Task-Form input[type="submit"]:hover {
     background-color: #0056b3;
-}
-
-/* Responsive styling */
-@media screen and (max-width: 768px) {
-    form {
-        width: 80%;
-    }
 }

@@ -2,58 +2,45 @@
 <html>
     
     <%- include("./partials/head.ejs")  %>
-    <link rel="stylesheet" href="/public/signupform.css">
+    <link rel="stylesheet" href="/public/sign_up_form.css">
+    <script src="/scripts/new_user_validation.js"></script>
 
     <body>
         <%- include("./partials/nav.ejs")  %>
 
-        <br><br><br>
-
-
-        <div>
-            <form id="signupForm" action="/SignUp" method="POST">
-                <label for="email">Enter email adress:</label>
-                <input type="email" id="email" name="email" placeholder="Email Adress" required>
-
-                <br><br>
-
-                <label for="username">Enter Username:</label>
-                <input type="text" id="username" name="username" placeholder="Username" required>
-
-                <br><br>
-
-                <label for="password">Enter an Password</label>
-                <input type="password" id="password" name="password" placeholder="Password" required>
-
-                <p>Select your age: </p>
-
-                <input type="radio" name="age" value="0-18" id="option-1">
-                <label for="option-1">0-18</label>
-                <br>
-                <input type="radio" name="age" value="19-40" id="option-2">
-                <label for="option-2">19-40</label>
-                <br>
-                <input type="radio" name="age" value="41-60" id="option-3">
-                <label for="option-3">41-60</label>
-                <br>
-                <input type="radio" name="age" value="60+" id="option-4">
-                <label for="option-4">60+</label>
-                
-                <br><br><br>
-
-                <label for="location"> choose a location </label>
-                <select name="location" id="location">
-                    <option value="Israel"> IL </option>
-                    <option value="United States"> US </option>
-                    <option value="United Kindom"> UK </option>
+        <div class="container">
+            <h2>User Sign Up</h2>
+            <form action="/signUp" method="post" onsubmit="return validate_new_user_form()">
+                <label for="Name">First Name:</label>
+                <input type="text" id="Name" name="Name" required>
+    
+                <label for="Lastname">Last Name:</label>
+                <input type="text" id="Lastname" name="Lastname" required>
+    
+                <label for="Username">Username:</label>
+                <input type="text" id="UserName" name="UserName" required>
+    
+                <label for="Password">Password:</label>
+                <input type="password" id="Password" name="Password" required minlength="7">
+    
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+    
+                <label for="Email">Email:</label>
+                <input type="email" id="Email" name="Email" required>
+    
+                <label for="location">Location:</label>
+                <select id="location" name="location" required>
+                    <option value="" disabled selected>Select your location</option>
+                    <option value="Houston">Israel</option>
+                    <option value="New York">New York</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Houston">Houston</option>
                 </select>
-
-                <br>
-
-                <input type="submit" value="SignUp">
-
+    
+                <input type="submit" value="Sign Up">
             </form>
-
         </div>
         
     </body>
