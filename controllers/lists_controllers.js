@@ -1,28 +1,30 @@
 import { ObjectId } from 'mongodb';
-import { getDb } from '../db.js'; // Import getDb function from db.js
+import { getDb } from '../db.js'; 
 
 
 const show_list = (request, response) => {
-    const db = getDb(); // Access the database instance using getDb
+    const db = getDb(); 
+    let user_name = response.locals.user.UserName;
     let tasks = [];
-    db.collection('tasks').find()
+    db.collection('tasks').find({ written_by: user_name }) 
         .sort({ priority: -1 })
-        .toArray() // Convert the cursor to an array
+        .toArray()
         .then((taskArray) => {
-            tasks = taskArray; // Assign the array of tasks
-            response.render('Lists', { tasks: tasks });
+            response.render('Lists', { tasks: taskArray });
         })
         .catch((err) => {
-            response.status(500).json({ error: 'error' }); // Handle the error
+            response.status(500).json({ error: 'Error fetching tasks' });
         });
 };
 
 
 const post_task = (request, response) => {
-    const db = getDb(); // Access the database instance using getDb
+    const db = getDb(); 
+    let user_name = response.locals.user.UserName;
     const task = request.body;
     task.priority = parseInt(task.priority);
     task.createdAt = new Date();
+    task.written_by = user_name;
 
     db.collection('tasks')
         .insertOne(task)

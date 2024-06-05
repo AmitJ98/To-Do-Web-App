@@ -26,8 +26,12 @@ app.use('/public', express.static('public'));
 app.use('/scripts', express.static('scripts'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(['/lists'], auth_middleware.checkUser);
 
-// app.get('*',auth_middleware.checkUser)
+
+
+
+app.get('*',auth_middleware.checkUser)
 
 
 //info routes
@@ -36,7 +40,14 @@ response.redirect('/home');
 });
 
 app.get('/home', (request, response) => {
-    response.render('home');
+    let username;
+    if (response.locals.user == null){
+            username = "Hi you are Not Loged in please do so"
+        }
+    else{
+        username = response.locals.user.UserName;
+    }
+    response.render('home',{uname:username});
 });
 
 app.get('/about', (request, response) => {
