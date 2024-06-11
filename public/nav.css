@@ -19,7 +19,9 @@ header {
 }
 
 #headline span {
-    color: #ff5252; /* Change color of "Web App" */
+    color: #0066ff; /* Change color of "Web App" to blue */
+    font-size: 40px; /* Increase font size */
+    font-weight: bold; /* Optionally, make the text bold */
 }
 
 /* Style navigation */

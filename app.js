@@ -1,10 +1,10 @@
 import express from 'express';
 import { render } from 'ejs';
-import { connectToDb, getDb } from './db.js';
-import lists_controllers from './controllers/lists_controllers.js';
-import Auth_controllers from './controllers/auth_controllers.js';
 import cookieParser from 'cookie-parser';
+import { connectToDb, getDb } from './db.js';
+import Auth_controllers from './controllers/auth_controllers.js';
 import auth_middleware from './middleware/auth_middleware.js';
+import listRoutes from './Routes/ListRoutes.js'
 
 const app = express();
 
@@ -26,8 +26,10 @@ app.use('/public', express.static('public'));
 app.use('/scripts', express.static('scripts'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(['/lists'], auth_middleware.checkUser);
+app.use(['/lists'], auth_middleware.requireAuth);
 
+
+app.use('/lists', listRoutes); // all the list routes
 
 
 
@@ -41,12 +43,11 @@ response.redirect('/home');
 
 app.get('/home', (request, response) => {
     let username;
-    if (response.locals.user == null){
-            username = "Hi you are Not Loged in please do so"
-        }
-    else{
+    if (response.locals.user != null)
+        {
         username = response.locals.user.UserName;
-    }
+        }
+    
     response.render('home',{uname:username});
 });
 
@@ -68,14 +69,6 @@ app.get('/logout', Auth_controllers.user_logout);
 
 
 // User/profile routes
-
-
-
-
-
-// Task list routes
-app.get('/lists', auth_middleware.requireAuth, (request, response) => lists_controllers.show_list(request, response));
-app.get('/lists/:id', (request, response) => lists_controllers.task_details(request, response));
-app.post('/lists', (request, response) => lists_controllers.post_task(request, response));
-app.post('/lists/:id/delete', (request, response) => lists_controllers.delete_task(request, response));
-app.post('/lists/:id', (request, response) => lists_controllers.update_task(request, response));
+app.get('/profile',(request, response) => {
+    response.redirect('home');
+    })
