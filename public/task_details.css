@@ -9,14 +9,15 @@ body {
     max-width: 600px;
     margin: 50px auto;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
 }
 
 .form-group {
@@ -25,22 +26,36 @@ h1 {
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: bold;
+    color: #333;
 }
 
 input[type="text"],
 input[type="number"],
+input[type="date"],
 textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    margin-bottom: 20px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 textarea {
-    height: 100px;
+    height: 120px;
+    resize: vertical;
 }
 
 button[type="submit"],
@@ -48,12 +63,12 @@ button[type="submit"],
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
-
 
 button[type="submit"]:hover,
 .delete-btn:hover {
@@ -63,13 +78,14 @@ button[type="submit"]:hover,
 .error-message {
     color: red;
     margin-top: 5px;
+    font-size: 14px;
 }
 
 #deleteButton {
     background-color: #ff6347; /* Red */
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

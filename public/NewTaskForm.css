@@ -1,48 +1,75 @@
+/* Container styling for the form */
 #New-Task-Form {
-    max-width: 400px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    margin: 40px auto;
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
 }
 
+/* Styling for labels */
 #New-Task-Form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
 }
 
+/* Styling for text input fields and textarea */
 #New-Task-Form input[type="text"],
-#New-Task-Form textarea {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-#New-Task-Form textarea {
-    height: 100px;
-}
-
+#New-Task-Form textarea,
+#New-Task-Form input[type="date"],
 #New-Task-Form input[type="number"] {
-    width: 50px;
-    padding: 5px;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s;
 }
 
+/* Focus state for input fields */
+#New-Task-Form input[type="text"]:focus,
+#New-Task-Form textarea:focus,
+#New-Task-Form input[type="date"]:focus,
+#New-Task-Form input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Specific styling for the priority input field */
+#New-Task-Form input[type="number"] {
+    width: 80px;
+    padding: 10px;
+}
+
+/* Styling for the submit button */
 #New-Task-Form input[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
+/* Hover state for the submit button */
 #New-Task-Form input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+/* Add some space between form elements */
+#New-Task-Form br {
+    display: none;
+}
+
+/* Style for the textarea to make it more comfortable */
+#New-Task-Form textarea {
+    resize: vertical;
 }

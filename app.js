@@ -27,6 +27,8 @@ app.use('/scripts', express.static('scripts'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(['/lists'], auth_middleware.requireAuth);
+app.use(['/lists'], auth_middleware.checkUser);
+
 
 
 app.use('/lists', listRoutes); // all the list routes

@@ -1,5 +1,4 @@
 function validatePassword() {
-    console.log("here1")
     const password = document.getElementById("Password").value;
     const confirmPassword = document.getElementById("confirm_password").value;
     if (password == confirmPassword){
@@ -11,7 +10,6 @@ function validatePassword() {
     }
     
 }
-
 
 function validate_new_user_form(){
     if(validatePassword() == true  ){

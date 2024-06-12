@@ -69,8 +69,15 @@ const user_log_in = async (request, response) => {
 
 
 const user_logout = (request, response) => {
-    response.cookie('jwt', '', { maxAge: 1 });
-    response.redirect('/home');
+    if(response.locals.user != null)
+    {
+        response.cookie('jwt', '', { maxAge: 1 });
+        response.redirect('/home');
+    }
+    else
+    {
+        response.redirect('/login');
+    }
 };
 
 
