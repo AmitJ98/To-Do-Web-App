@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html> 
     <%- include("./partials/head.ejs")  %>
-    <link rel="stylesheet" href="/public/NewTaskForm.css">
-    <link rel="stylesheet" href="/public/display_tasks.css">
     <script src="../scripts/new_task_validation.js"></script>
+    
     <body>
         <%- include("./partials/nav.ejs")  %>
 
@@ -12,7 +11,7 @@
                 <% for (let i = 0; i < tasks.length; i++) { %>
                     <div class="task-item" id="task<%= i %>">
                         <a class="task_details" href="/lists/<%= tasks[i]._id %>">
-                            <h2 id="display-task"><%= tasks[i].task %></h2>
+                            <h2 id="display-task"><%= tasks[i].title %></h2>
                             <% if (tasks[i].description) { %>
                                 <p class="description"><%= tasks[i].description %></p>
                             <% } %>
@@ -26,8 +25,8 @@
 
 
         <form id="New-Task-Form" action="/lists" method="post" onsubmit="return validate_new_task_form()">
-            <label for="task">Enter New Task: </label>
-            <input type="text" id="task" name="task" required>
+            <label for="title">Enter New Task: </label>
+            <input type="text" id="title" name="title" required placeholder="Task Title">
             <br><br>
         
             <textarea id="description" name="description" placeholder="Enter Task Description"></textarea>

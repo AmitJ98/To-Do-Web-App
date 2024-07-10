@@ -26,8 +26,8 @@ app.use('/public', express.static('public'));
 app.use('/scripts', express.static('scripts'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(['/lists'], auth_middleware.requireAuth);
-app.use(['/lists'], auth_middleware.checkUser);
+app.use(['/lists','/profile'], auth_middleware.requireAuth);
+app.use(['/lists','/profile'], auth_middleware.checkUser);
 
 
 
@@ -72,5 +72,11 @@ app.get('/logout', Auth_controllers.user_logout);
 
 // User/profile routes
 app.get('/profile',(request, response) => {
-    response.redirect('home');
+    let user = response.locals.user;
+    response.render('profile', { user: user });
+    })
+
+app.post('/profile',(request, response) => {
+    let user = response.locals.user;
+    response.render('profile', { user: user });
     })

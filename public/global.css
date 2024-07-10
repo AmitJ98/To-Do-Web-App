@@ -1,0 +1,282 @@
+/* global.css */
+
+/* General body style */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* General container style */
+.container,
+.login-container,
+.about-container,
+#task-container,
+#New-Task-Form,
+.home-page-container {
+    max-width: 540px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Home page container style */
+.home-page-container {
+    max-width: 900px;
+    text-align: center;
+}
+
+/* Header styles */
+header {
+    background-color: #f4f4f4;
+    padding: 20px 0;
+    text-align: center;
+}
+
+#headline {
+    font-size: 36px;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+#headline span {
+    color: #007bff;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* General button styles */
+button,
+input[type="submit"],
+.cta-button,
+.delete-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.cta-button:hover,
+.delete-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Specific button styles */
+button[type="submit"],
+.delete-btn {
+    width: auto;
+    padding: 12px 25px;
+}
+
+/* Delete button styles */
+#deleteButton {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#deleteButton:hover {
+    background-color: #ff473a;
+}
+
+/* Form elements */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Link styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Task item styles */
+.task-item {
+    position: relative;
+}
+
+.task-item::before {
+    content: '•';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #007bff;
+    font-size: 16px;
+}
+
+.task-item h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.task-item .description {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1;
+}
+
+.task-item:hover .description {
+    display: block;
+}
+
+/* Navigation styles */
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+.top-right-links {
+    display: flex;
+    align-items: center;
+}
+
+.top-right-links a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 20px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.top-right-links a:hover {
+    background-color: #ffcc00;
+}
+
+/* Home page specific styles */
+.home-page-headline h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.home-page-details {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.home-page-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.home-page-details li {
+    margin-bottom: 10px;
+}
+
+/* Task details specific styles */
+h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+}

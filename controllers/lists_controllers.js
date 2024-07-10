@@ -4,7 +4,6 @@ import { getDb } from '../db.js';
 
 const show_list = (request, response) => {
     const db = getDb(); 
-    // console.log(response.locals.user);
     let user_name = response.locals.user.UserName;
     db.collection('tasks').find({ written_by: user_name }) 
         .sort({ priority: -1 })

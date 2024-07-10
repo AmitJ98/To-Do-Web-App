@@ -42,7 +42,7 @@ const checkUser = (request, response, next) => {
                 // Find the user based on the decoded token
                 const user = await db.collection('Users').findOne({ _id: new ObjectId(decodedToken.id) }, { projection: { Password: 0 } });
                 if (user) {
-                    console.log('User found:', user); // Print the user to the log
+                    console.log('User found:', user._id); // Print the user to the log
                 } else {
                     console.log('No user found with the given ID');
                 }

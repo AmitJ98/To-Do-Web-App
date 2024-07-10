@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs")  %>
+    
+    <script>
+        function toggleEditMode() {
+            const isEditing = document.getElementById('edit-button').style.display === 'none';
+            document.getElementById('edit-button').style.display = isEditing ? 'inline-block' : 'none';
+            document.getElementById('save-button').style.display = isEditing ? 'none' : 'inline-block';
+
+            document.querySelectorAll('.editable').forEach(el => {
+                el.disabled = isEditing;
+            });
+        }
+    </script>
+
+</head>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="home-page-container">
+        <div class="home-page-headline">
+            <h2><%= user.UserName %>'s Profile</h2>
+        </div>
+        <form action="/update-profile" method="POST">
+            <div class="home-page-details">
+                <p>
+                    Name: 
+                    <input type="text" name="name" value="<%= user.Name %>" class="editable" disabled>
+                </p>
+                <p>
+                    Last Name: 
+                    <input type="text" name="name" value="<%= user.Lastname %>" class="editable" disabled>
+                </p>
+                <p>
+                    Email: 
+                    <input type="email" name="email" value="<%= user.Email %>" class="editable" disabled>
+                </p>
+                <p>
+                    Username: 
+                    <input type="text" name="username" value="<%= user.UserName %>" class="editable" disabled>
+                </p>
+                <p>
+                    Location: 
+                    <input type="text" name="joinedDate" value="<%= user.location %>" class="editable" disabled>
+                </p>
+
+            </div>
+            <button type="button" id="edit-button" class="cta-button" onclick="toggleEditMode()">Edit Profile</button>
+            <button type="submit" id="save-button" class="cta-button" style="display: none;">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>
